@@ -1,3 +1,4 @@
+package projekt;
 import java.applet.AudioClip;
 
 /** SoundChannel is used because we sometimes want to play one sound when the

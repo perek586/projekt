@@ -1,3 +1,4 @@
+package projekt;
 import java.applet.AudioClip;
 import java.net.MalformedURLException;
 import java.net.URL;
