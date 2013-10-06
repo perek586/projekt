@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4a4d9cd-6288-478e-ab71-c613fc4507e8" name="Default" comment="skrev en kommentar på line 5">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projekt.iml" />
-    </list>
-    <list id="95916083-6db4-4e34-a658-1a2d2f34ada5" name="Rejected commit: Default" comment="skrev en kommentar på line 5">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/projekt/Player.java" afterPath="$PROJECT_DIR$/src/projekt/Player.java" />
-    </list>
+    <list default="true" id="f4a4d9cd-6288-478e-ab71-c613fc4507e8" name="Default" comment="skrev en kommentar på line 5" />
+    <list id="95916083-6db4-4e34-a658-1a2d2f34ada5" name="Rejected commit: Default" comment="skrev en kommentar på line 5" />
     <ignored path="projekt.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="f4a4d9cd-6288-478e-ab71-c613fc4507e8" time="1381092151464" ignored="false" />
