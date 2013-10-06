@@ -1,0 +1,12 @@
+1000,1000,10,0.03,res/laser.png
+-1000,-1000,10,0.03,res/laser.png
+add,1000
+-1000,1000,10,0.03,res/laser2.png
+1000,-1000,10,0.03,res/laser2.png
+add,200
+0,1000,10,0.03,res/laser.png
+0,-1000,10,0.03,res/laser.png
+add,1000
+-1000,0,10,0.03,res/laser2.png
+1000,0,10,0.03,res/laser2.png
+add,200

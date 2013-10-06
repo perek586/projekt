@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="projektTiles" tilewidth="32" tileheight="32">
+  <image source="tileSheet.png" width="128" height="32"/>
+  <tile id="3">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Y0QrDIAxF087//+atsIc8xJrWaBTOgUvLkJKzuExaRKQkJgr9zENdr5y/fP45HqY410R6nCpP6+1JtMfM2vHweczeU/Qj1qPXP3r23tUzslczPVo17OpRKve7ebxNbRbu5nHXkyhqHq3P9dVa6/k/ypq7rbOrXreih1VrbY23F5n98Ppm/z4inFbwiOrJ7h6r7Cvvd2zV++askjmvPHN3VY9RwQMPPPDAo78u63nWuX7ke+qMAAAAAAAAAIDIFzRTLUQQJwAA
+  </data>
+ </layer>
+ <objectgroup color="#aa007f" name="Object Layer 1" width="50" height="50">
+  <properties>
+   <property name="boss1" value="lawl"/>
+  </properties>
+  <object x="305" y="439" width="302" height="230"/>
+ </objectgroup>
+</map>
