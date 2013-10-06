@@ -198,15 +198,14 @@ public class OOWorld extends BasicGame{
 			while(line != null){	
 				values = line.split(",");
 				if(values[0].equals("add")){
-					System.out.println(ability);
 					entity.addAttack(ability, Integer.parseInt(values[1]));
 					ability = new Ability();
 					
 				}else{
-					System.out.println(values[3]);
+					System.out.println(line);
 					proj = new Projectile(	
-											entity.getX()+Float.parseFloat(values[0]),
-											entity.getY()+Float.parseFloat(values[1]),
+											Float.parseFloat(values[0]),
+											Float.parseFloat(values[1]),
 											Float.parseFloat(values[2]),
 											Float.parseFloat(values[3]),
 											new Image(values[4]),

@@ -48,13 +48,13 @@ public class Projectile implements Cloneable{
 	}
 	public void update(int delta){
 		this.image = this.image.copy();
-		Vector2d difference = this.destination.getDifference(this.pos);
-		Vector2d normalized = difference.getNormalized();
+		Vector2d normalized = destination.getNormalized();
 		this.pos.setX((this.pos.getX() + speed*delta*normalized.getX()));
 		this.pos.setY((this.pos.getY() + speed*delta*normalized.getY()));
 		this.hitBox.setLocation(this.pos.getX(), this.pos.getY());
-		rotation = Math.toDegrees(Math.atan2(difference.getX(),difference.getY()));
+		rotation = Math.toDegrees(Math.atan2(normalized.getY(),normalized.getX()));
 		this.image.setRotation((float)rotation);
+			
 	}
 	
 	public void draw(int xOffset, int yOffset){
