@@ -2,7 +2,7 @@ package projekt;
 import org.newdawn.slick.Animation;
 
 public class Player extends Entity{
-	
+	      //per älskar kakor
 	private Vector2d dir = new Vector2d(0, -1);
 	private Entity boss;
 	
