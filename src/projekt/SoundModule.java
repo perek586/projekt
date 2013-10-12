@@ -33,6 +33,10 @@ public class SoundModule{
     public void printSoundMap(){
         System.out.println(soundMap.toString());
     }
+    
+    public void loopSound(String key){
+    	getAudioClip(key).loop();
+    }
 
     /** addSoundToMap adds a key with a related path to our soundMap */
     public String addSoundToMap(String key, String path, int id) throws MalformedURLException {

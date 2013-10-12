@@ -6,7 +6,7 @@ public final class inputHandler {
 	
 	private inputHandler(){}
 	
-	public static Vector2d playerInput(Player player, Input input, int delta){
+	public static Vector2d playerInput(Player player, Input input, int delta, SoundModule sound){
 		float newX = player.getX();
 		float newY = player.getY();
 		
@@ -31,7 +31,7 @@ public final class inputHandler {
 		}
 		if(input.isKeyDown(Input.KEY_SPACE)){
 			if(player.canAttack()){
-				player.attack();
+				player.attack(sound);
 			}
 		}
 		

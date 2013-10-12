@@ -1,6 +1,7 @@
 package projekt;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Animation;
@@ -23,9 +24,12 @@ public class OOWorld extends BasicGame{
 	private int SIZE = 32;
 	private int WIDTH = 800;
 	private int HEIGHT = 600;
+	private SoundModule sound = new SoundModule();
+	private SoundID sid = new SoundID();
 	private boolean[][] blocked;
 	private Vector2d playerNextPos;
 	private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+	private String worldMusic, attackSound;
 	
 	public OOWorld(){ 
 		super("Game");
@@ -36,6 +40,7 @@ public class OOWorld extends BasicGame{
 			AppGameContainer app = new AppGameContainer(new OOWorld());
 			app.setDisplayMode(800, 600, false);
 			app.start();
+			app.setVSync(false);
 		}catch(SlickException e){
 		e.printStackTrace();
 		}
@@ -58,6 +63,14 @@ public class OOWorld extends BasicGame{
 	
 	@Override
 	public void init(GameContainer container) throws SlickException{
+		try {
+			worldMusic = sound.addSoundToMap("World", "res/Sound/World.wav", sid.getMusicID(0));
+			attackSound = sound.addSoundToMap("Attack", "res/Sound/playerHit.wav", sid.getAttackID(0));
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+		sound.loopSound(worldMusic);
+		
 		Image[] movementUp = {new Image("res/Character1_back.png"),
 								new Image("res/Character1_back.png"),
 								new Image("res/Character1_back.png"),
@@ -101,10 +114,10 @@ public class OOWorld extends BasicGame{
 		left = new Animation(movementLeft, duration, false);
 		right = new Animation(movementRight, duration, false);
 		Animation[] animList = {up, down, left, right};
-		
+		Animation[] bossAnim = {up.copy(), down.copy(), left.copy(), right.copy()};
 		player = new Player(new Vector2d(10*SIZE, 10*SIZE), animList);	
-		
-		entity = new Boss(new Vector2d(25 * SIZE, 25 * SIZE), animList);
+		player.setAttackSound(attackSound);
+		entity = new Boss(new Vector2d(25 * SIZE, 25 * SIZE), bossAnim, player);
 		entity.setProjectileList(projectiles);
 		player.setCurrentBoss(entity);
 		
@@ -114,7 +127,6 @@ public class OOWorld extends BasicGame{
 			this.initAbilities();
 		}catch (IOException e){
 			e.printStackTrace();
-			System.out.println("failed");
 		}
 		for(int x = 0; x < tileMap.getWidth(); x ++){
 			for (int y = 0; y < tileMap.getHeight(); y++){
@@ -130,7 +142,7 @@ public class OOWorld extends BasicGame{
 	@Override
 	public void update(GameContainer container, int delta)throws SlickException{		
 		Projectile proj;
-		playerNextPos = inputHandler.playerInput(player, container.getInput(), delta);
+		playerNextPos = inputHandler.playerInput(player, container.getInput(), delta, sound);
 		entity.update(delta);
 		if(!isBlocked(	playerNextPos, 
 						player.getWidth(), 
@@ -199,10 +211,8 @@ public class OOWorld extends BasicGame{
 				values = line.split(",");
 				if(values[0].equals("add")){
 					entity.addAttack(ability, Integer.parseInt(values[1]));
-					ability = new Ability();
-					
+					ability = new Ability();				
 				}else{
-					System.out.println(line);
 					proj = new Projectile(	
 											Float.parseFloat(values[0]),
 											Float.parseFloat(values[1]),

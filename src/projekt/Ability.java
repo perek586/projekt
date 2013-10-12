@@ -12,7 +12,7 @@ public class Ability {
 		for(int i = 0; i < pattern.size(); i++){
 			try{
 				proj = pattern.get(i).Clone();
-				proj.create(x, y);
+				proj.create(x-proj.getWidth()/2, y-proj.getHeight()/2);
 				projectiles.add(proj);
 			}catch(CloneNotSupportedException e){
 				e.printStackTrace();
