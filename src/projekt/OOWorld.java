@@ -29,7 +29,7 @@ public class OOWorld extends BasicGame{
 	private boolean[][] blocked;
 	private Vector2d playerNextPos;
 	private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-	private String worldMusic, attackSound;
+	private String worldMusic, playerAttackSound, bossAttackSound, collisionSound;
 	
 	public OOWorld(){ 
 		super("Game");
@@ -65,7 +65,11 @@ public class OOWorld extends BasicGame{
 	public void init(GameContainer container) throws SlickException{
 		try {
 			worldMusic = sound.addSoundToMap("World", "res/Sound/World.wav", sid.getMusicID(0));
-			attackSound = sound.addSoundToMap("Attack", "res/Sound/playerHit.wav", sid.getAttackID(0));
+			playerAttackSound = sound.addSoundToMap("Attack", "res/Sound/Shoot.wav", sid.getAttackID(0));
+            bossAttackSound = sound.addSoundToMap("Attack", "res/Sound/Boss_attack.wav", sid.getAttackID(1));
+            collisionSound = sound.addSoundToMap("Collision", "res/Sound/Collide.wav", sid.getEffectID(0));
+
+
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		}
@@ -116,9 +120,10 @@ public class OOWorld extends BasicGame{
 		Animation[] animList = {up, down, left, right};
 		Animation[] bossAnim = {up.copy(), down.copy(), left.copy(), right.copy()};
 		player = new Player(new Vector2d(10*SIZE, 10*SIZE), animList);	
-		player.setAttackSound(attackSound);
+		player.setAttackSound(playerAttackSound);
 		entity = new Boss(new Vector2d(25 * SIZE, 25 * SIZE), bossAnim, player);
 		entity.setProjectileList(projectiles);
+        entity.setAttackSound(bossAttackSound);
 		player.setCurrentBoss(entity);
 		
 		tileMap = new TiledMap("res/tilemap.tmx");
@@ -143,7 +148,7 @@ public class OOWorld extends BasicGame{
 	public void update(GameContainer container, int delta)throws SlickException{		
 		Projectile proj;
 		playerNextPos = inputHandler.playerInput(player, container.getInput(), delta, sound);
-		entity.update(delta);
+		entity.update(delta, sound);
 		if(!isBlocked(	playerNextPos, 
 						player.getWidth(), 
 						player.getHeight())){
@@ -159,6 +164,7 @@ public class OOWorld extends BasicGame{
 							proj.getWidth(), 
 							proj.getHeight())){
 				projectiles.remove(i);
+                sound.playSound(collisionSound);
 			}
 			else if(proj.collidesWith(entity) && proj.getOwner() == player){
 				proj.damage(entity);
