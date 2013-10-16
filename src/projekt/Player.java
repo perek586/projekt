@@ -6,6 +6,8 @@ public class Player extends Entity{
 	private Vector2d dir = new Vector2d(0, -1);
 	private Entity boss;
 	
+	private String attackSound;
+	
 	private boolean hasAttacked = false;
 	
 	private int maxCD = 300;
@@ -50,10 +52,11 @@ public class Player extends Entity{
 	public boolean canAttack(){
 		return !hasAttacked;
 	}
-	public void attack(){
+	public void attack(SoundModule sound){
 		if(this.boss.getPos().getDistanceTo(this.pos.add(dir))<this.currentAnim.getWidth()){			
 			this.boss.setDamage(20);
 			hasAttacked = true;
+			sound.playSound(this.attackSound);
 			curCD = maxCD;
 		}
 	}
@@ -66,5 +69,12 @@ public class Player extends Entity{
 		}else{
 			curCD--;
 		}
+	}
+	
+	public void setAttackSound(String sound){
+		this.attackSound = sound;
+	}
+	public String getAttackSound(){
+		return this.attackSound;
 	}
 }

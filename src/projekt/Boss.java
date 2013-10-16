@@ -9,12 +9,15 @@ public class Boss extends Entity {
 	private ArrayList<Ability> attackList = new ArrayList<Ability>();
 	private ArrayList<Integer> delay = new ArrayList<Integer>();
 	private ArrayList<Projectile> projectiles;
+	private Player player;
 	
-	public Boss(Vector2d pos, Animation[] image){
+	public Boss(Vector2d pos, Animation[] image, Player player){
 		super(pos, image);
+		this.player = player;
 	}
-	public Boss(int x, int y, Animation[] image){
+	public Boss(int x, int y, Animation[] image, Player player){
 		super(x, y, image);
+		this.player = player;
 	}
 	
 	public void setProjectileList(ArrayList<Projectile> proj){
@@ -30,7 +33,6 @@ public class Boss extends Entity {
 		super.update(delta);
 		this.time += delta;
 		if(this.time >= delay.get(currentAttack)){
-			System.out.println(this.time);
 			attackList.get(currentAttack).trigger(projectiles,this.pos.getX()+this.getWidth()/2, this.pos.getY()+this.getHeight()/2);
 			this.time = 0;
 			this.currentAttack++;

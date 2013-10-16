@@ -10,7 +10,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2Y0QrDIAxF087//+atsIc8xJrWaBTOgUvLkJKzuExaRKQkJgr9zENdr5y/fP45HqY410R6nCpP6+1JtMfM2vHweczeU/Qj1qPXP3r23tUzslczPVo17OpRKve7ebxNbRbu5nHXkyhqHq3P9dVa6/k/ypq7rbOrXreih1VrbY23F5n98Ppm/z4inFbwiOrJ7h6r7Cvvd2zV++askjmvPHN3VY9RwQMPPPDAo78u63nWuX7ke+qMAAAAAAAAAIDIFzRTLUQQJwAA
+   H4sIAAAAAAAAC+2Y2wqAIBAFtfb/v7mCHiTyluvawgwcigjZ4YSBEkKQhdEiXTMm1yvbmf1O7Iw0vqPpsSXpnXck2h6Ws+PR5mH9TdGHrseov/beW5pnZleWHrUZvHpI5t6bx9fk9kJvHqVOtMh5jPq1/I/+sO966WN2Fx48Vvdh7UQfeOCBBx544IEHHvW53tZ7Pp99Tu35vB0AAAAAAADAMwfG+xiJECcAAA==
   </data>
  </layer>
  <objectgroup color="#aa007f" name="Object Layer 1" width="50" height="50">

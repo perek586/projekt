@@ -1,5 +1,6 @@
 package projekt;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 public class Entity {
@@ -98,9 +99,13 @@ public class Entity {
 	}
 	public void setDamage(float dmg){
 		this.health -= dmg;
+		if(this.health < 0)
+			this.health = 0;
 	}
 	public void setDamage(int dmg){
 		this.health -= dmg;
+		if(this.health < 0)
+			this.health = 0;
 	}
 	/////////////////////
 	
